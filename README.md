@@ -28,9 +28,6 @@ Here's a breakdown of the available options and their meanings:
 
 --rg-args: Pass any custom ripgrep arguments you want to use with the search command. For example, --rg-args '--ignore-case' would ignore case sensitivity during the search.
 
-<namespace>: Specify the Kubernetes namespace containing the pods whose logs you want to analyze.
-
-
 ### Search Pattern Used
 
 The script uses a default search pattern (error|warn|fatal) to filter log events. If you specify a custom search pattern using one of the options mentioned above, it will be displayed in the Markdown report along with any custom ripgrep arguments provided.
