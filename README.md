@@ -65,3 +65,57 @@ You can now run the script using ;
 ```bash
 knslogs <namespace>
 ```
+
+# Report Exemple : 
+
+# Logs from Namespace: kube-system
+
+## Search Pattern Used
+
+ filter applied: `error` with custom arguments: ``
+
+## Pod: coredns-5dd5756b68-w5kjk in Namespace: kube-system
+### Container: coredns
+```
+
+```
+## Pod: etcd-minikube in Namespace: kube-system
+### Container: etcd
+```
+
+```
+## Pod: kube-apiserver-minikube in Namespace: kube-system
+### Container: kube-apiserver
+```
+I0322 14:40:28.807219       1 apf_controller.go:377] Running API Priority and Fairness config worker
+I0322 14:40:28.807230       1 apf_controller.go:380] Running API Priority and Fairness periodic rebalancing process
+E0322 14:40:28.809340       1 controller.go:97] Error removing old endpoints from kubernetes service: no API server IP addresses were listed in storage, refusing to erase all endpoints for the kubernetes Service
+I0322 14:40:28.813510       1 shared_informer.go:318] Caches are synced for node_authorizer
+I0322 14:40:29.708785       1 storage_scheduling.go:111] all system priority classes are created successfully or already exist.
+I0322 14:40:30.325778       1 controller.go:624] quota admission added evaluator for: serviceaccounts
+```
+## Pod: kube-controller-manager-minikube in Namespace: kube-system
+### Container: kube-controller-manager
+```
+
+```
+## Pod: kube-proxy-2cwhm in Namespace: kube-system
+### Container: kube-proxy
+```
+
+```
+## Pod: kube-scheduler-minikube in Namespace: kube-system
+### Container: kube-scheduler
+```
+I0322 14:40:27.831871       1 serving.go:348] Generated self-signed cert in-memory
+W0322 14:40:28.741780       1 requestheader_controller.go:193] Unable to get configmap/extension-apiserver-authentication in kube-system.  Usually fixed by 'kubectl create rolebinding -n kube-system ROLEBINDING_NAME --role=extension-apiserver-authentication-reader --serviceaccount=YOUR_NS:YOUR_SA'
+W0322 14:40:28.741809       1 authentication.go:368] Error looking up in-cluster authentication configuration: configmaps "extension-apiserver-authentication" is forbidden: User "system:kube-scheduler" cannot get resource "configmaps" in API group "" in the namespace "kube-system"
+W0322 14:40:28.741822       1 authentication.go:369] Continuing without authentication configuration. This may treat all requests as anonymous.
+W0322 14:40:28.741829       1 authentication.go:370] To require authentication configuration lookup to succeed, set --authentication-tolerate-lookup-failure=false
+I0322 14:40:28.751949       1 server.go:154] "Starting Kubernetes Scheduler" version="v1.28.3"
+```
+## Pod: storage-provisioner in Namespace: kube-system
+### Container: storage-provisioner
+```
+
+```
