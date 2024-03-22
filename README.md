@@ -1,4 +1,4 @@
-# Kube-Admin-Scipt
+# Kube-Admin-Scripts
 
 ## knslogs
 
