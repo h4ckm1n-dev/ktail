@@ -2,18 +2,18 @@
 
 ## knslogs
 
-Overview
+### Overview
 
 This script is designed to help you search and analyze Kubernetes pod logs using the ripgrep command-line tool. It compiles the results into a Markdown report, making it easy to share with team members or keep track of important log events. The script supports customizing the search pattern, output file, and additional ripgrep arguments for advanced usage.
 
 
-Usage
+### Usage
 
 To use this script, simply run it with the desired options and arguments:
 
 
 ```bash
-./ripgrep_kubernetes_logs.sh [--all|--error|--warn|--http] [--file filename.md] [--rg-args 'custom rg arguments'] <namespace>
+./knslogs.sh [--all|--error|--warn|--http] [--file filename.md] [--rg-args 'custom rg arguments'] <namespace>
 ```
 
 Here's a breakdown of the available options and their meanings:
@@ -53,5 +53,5 @@ To search for error messages in all pods within the kube-system namespace and sa
 
 
 ```bash
-./ripgrep_kubernetes_logs.sh --error --file error_logs.md kube-system
+./knslogs.sh --error --file error_logs.md kube-system
 ```
