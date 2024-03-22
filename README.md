@@ -20,13 +20,13 @@ Here's a breakdown of the available options and their meanings:
 
 
 
---all: Use this option to search for all log events with the default search pattern (error|warn|fatal).
+  --all: Use this option to search for all log events with the default search pattern (error|warn|fatal).
 
---error, --warn, or --http: Specify one of these options to search for logs containing the specified keyword. For example, use --error to search for error messages.
+  --error, --warn, or --http: Specify one of these options to search for logs containing the specified keyword. For example, use --error to search for error messages.
 
---file: Provide a filename (e.g., filename.md) to save the compiled Markdown report. If this option is not used, the script will display the results directly in the terminal.
+  --file: Provide a filename (e.g., filename.md) to save the compiled Markdown report. If this option is not used, the script will display the results directly in the terminal.
 
---rg-args: Pass any custom ripgrep arguments you want to use with the search command. For example, --rg-args '--ignore-case' would ignore case sensitivity during the search.
+  --rg-args: Pass any custom ripgrep arguments you want to use with the search command. For example, --rg-args '--ignore-case' would ignore case sensitivity during the search.
 
 by defaut --all --error --warn and --http use the power of ripgrep to filter logs and providing context with the two line before the patern match and 3 line after the partern match
 
