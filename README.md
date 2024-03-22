@@ -28,6 +28,8 @@ Here's a breakdown of the available options and their meanings:
 
 --rg-args: Pass any custom ripgrep arguments you want to use with the search command. For example, --rg-args '--ignore-case' would ignore case sensitivity during the search.
 
+by defaut --all --error --warn and --http use the power of ripgrep to filter logs and providing context with the two line before the patern match and 3 line after the partern match
+
 ### Search Pattern Used
 
 The script uses a default search pattern (error|warn|fatal) to filter log events. If you specify a custom search pattern using one of the options mentioned above, it will be displayed in the Markdown report along with any custom ripgrep arguments provided.
