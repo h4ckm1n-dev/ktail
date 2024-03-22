@@ -22,7 +22,7 @@ Here's a breakdown of the available options and their meanings:
 
   --all: Use this option to search for all log events with the default search pattern (error|warn|fatal).
 
-  --error, --warn, or --http: Specify one of these options to search for logs containing the specified keyword. For example, use --error to search for error messages.
+  --error, --warn, or --http (4XX|5XX): Specify one of these options to search for logs containing the specified keyword. For example, use --error to search for error messages.
 
   --file: Provide a filename (e.g., filename.md) to save the compiled Markdown report. If this option is not used, the script will display the results directly in the terminal.
 
