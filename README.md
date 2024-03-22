@@ -52,3 +52,14 @@ To search for error messages in all pods within the kube-system namespace and sa
 ```bash
 ./knslogs.sh --error --file error_logs.md kube-system
 ```
+
+If you use this script a lot :
+
+```bash
+mv knslogs.sh /usr/local/bin/knslogs
+```
+
+You can now run the script using ;
+```bash
+knslogs <namespace>
+```
