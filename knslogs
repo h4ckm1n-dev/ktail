@@ -38,12 +38,26 @@ while [[ $# -gt 0 ]]; do
 			rg_custom_args="$2"
 			shift 2
 			;;
-		--help)
-			echo "Usage: $0 [--all|--error|--warn|--http] [--file filename.md] [--rg-args 'custom rg arguments'] <namespace>"
-			echo "Search Kubernetes pod logs for specified patterns and compile results into a Markdown report. Custom rg arguments can be passed with --rg-args."
-			exit 0
-			;;
-		*)
+        --help)
+            echo "Usage: $0 [options] <namespace>"
+            echo
+            echo "Options:"
+            echo "  --all                  Use the default search pattern for logs."
+            echo "  --error, --warn, --http Select specific log level patterns (error, warn, http) to search."
+            echo "  --file <filename.md>   Specify the output Markdown filename for the report."
+            echo "  --rg-args '<args>'     Provide custom 'rg' (ripgrep) arguments."
+            echo
+            echo "Description:"
+            echo "  Search Kubernetes pod logs for specified patterns and compile results into a Markdown report."
+            echo "  Custom 'rg' arguments can be passed with --rg-args for more advanced search options."
+            echo
+            echo "Examples:"
+            echo "  $0 --error --file error_report.md my_namespace"
+            echo "  $0 --all --rg-args '--ignore-case --follow' my_namespace"
+            echo
+            exit 0
+            ;;
+        *)
 			if [[ -z $namespace ]]; then
 				namespace="$1"
 			else
