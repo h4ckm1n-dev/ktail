@@ -7,66 +7,66 @@ declare namespace=""
 declare rg_custom_args=""
 
 process_logs() {
-	local log_pattern=$1
-	local log_output
+    local log_pattern=$1
+    local log_output
 
-	if [[ -n $markdown_file ]]; then
-		printf '```\n' >>"$markdown_file"
-		log_output=$(rg $RG_OPTIONS $rg_custom_args -e "$log_pattern")
-		printf "%s\n" "$log_output" >>"$markdown_file"
-		printf '```\n' >>"$markdown_file"
-	else
-		rg $RG_OPTIONS $rg_custom_args -e "$log_pattern"
-	fi
+    if [[ -n $markdown_file ]]; then
+        printf '```\n' >>"$markdown_file"
+        log_output=$(rg $RG_OPTIONS $rg_custom_args -e "$log_pattern")
+        printf "%s\n" "$log_output" >>"$markdown_file"
+        printf '```\n' >>"$markdown_file"
+    else
+        rg $RG_OPTIONS $rg_custom_args -e "$log_pattern"
+    fi
 }
 
 while [[ $# -gt 0 ]]; do
-	case $1 in
-		--all)
-			search_pattern="$DEFAULT_PATTERN"
-			shift
-			;;
-		--error|--warn|--http)
-			search_pattern="${1#--}"
-			shift
-			;;
-		--file)
-			markdown_file="$2"
-			shift 2
-			;;
-		--rg-args)
-			rg_custom_args="$2"
-			shift 2
-			;;
-	        --help)
-	            echo "Usage: $0 [options] <namespace>"
-	            echo
-	            echo "Options:"
-	            echo "  --all                  Use the default search pattern for logs."
-	            echo "  --error, --warn, --http Select specific log level patterns (error, warn, http) to search."
-	            echo "  --file <filename.md>   Specify the output Markdown filename for the report."
-	            echo "  --rg-args '<args>'     Provide custom 'rg' (ripgrep) arguments."
-	            echo
-	            echo "Description:"
-	            echo "  Search Kubernetes pod logs for specified patterns and compile results into a Markdown report."
-	            echo "  Custom 'rg' arguments can be passed with --rg-args for more advanced search options."
-	            echo
-	            echo "Examples:"
-	            echo "  $0 --error --file error_report.md my_namespace"
-	            echo "  $0 --all --rg-args '--ignore-case --follow' my_namespace"
-	            echo
-	            exit 0
-	            ;;
-	        *)
-			if [[ -z $namespace ]]; then
-				namespace="$1"
-			else
-				echo "Unknown argument: $1"
-				exit 1
-			fi
-			shift
-			;;
-	esac
+    case $1 in
+        --all)
+            search_pattern="$DEFAULT_PATTERN"
+            shift
+            ;;
+        --error|--warn|--http)
+            search_pattern="${1#--}"
+            shift
+            ;;
+        --file)
+            markdown_file="$2"
+            shift 2
+            ;;
+        --rg-args)
+            rg_custom_args="$2"
+            shift 2
+            ;;
+        --help)
+            echo "Usage: $0 [options] <namespace>"
+            echo
+            echo "Options:"
+            echo "  --all                  Use the default search pattern for logs."
+            echo "  --error, --warn, --http Select specific log level patterns (error, warn, http) to search."
+            echo "  --file <filename.md>   Specify the output Markdown filename for the report."
+            echo "  --rg-args '<args>'     Provide custom 'rg' (ripgrep) arguments."
+            echo
+            echo "Description:"
+            echo "  Search Kubernetes pod logs for specified patterns and compile results into a Markdown report."
+            echo "  Custom 'rg' arguments can be passed with --rg-args for more advanced search options."
+            echo
+            echo "Examples:"
+            echo "  $0 --error --file error_report.md my_namespace"
+            echo "  $0 --all --rg-args '--ignore-case --follow' my_namespace"
+            echo
+            exit 0
+            ;;
+        *)
+            if [[ -z $namespace ]]; then
+                namespace="$1"
+            else
+                echo "Unknown argument: $1"
+                exit 1
+            fi
+            shift
+            ;;
+    esac
 done
 
 if [[ -z $namespace ]]; then
