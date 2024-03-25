@@ -65,7 +65,7 @@ while [[ $# -gt 0 ]]; do
             shift
             ;;
         -h|--http)
-            search_pattern="http"
+            search_pattern=" 404 | 403 | 500 | 502 | 503 | 504 "
             shift
             ;;
         -f|--file)
