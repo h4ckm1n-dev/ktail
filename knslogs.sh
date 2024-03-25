@@ -1,5 +1,35 @@
 #!/bin/bash
 
+# Function to display the help message
+show_help() {
+    echo "Usage: $0 [options] <namespace>"
+    echo
+    echo "Options:"
+    echo "  -a, --all                  Use the default search pattern for logs."
+    echo "  -e, --error                Select the 'error' log level pattern to search."
+    echo "  -w, --warn                 Select the 'warn' log level pattern to search."
+    echo "  -h, --http                 Select the 'http' log level pattern to search."
+    echo "  -f, --file <filename.md>   Specify the output Markdown filename for the report."
+    echo "  -s, --search <pattern>     Specify a custom search pattern."
+    echo "      --rg-args '<args>'     Provide custom 'rg' (ripgrep) arguments."
+    echo
+    echo "Description:"
+    echo "  Search Kubernetes pod logs for specified patterns and compile results into a Markdown report."
+    echo "  Custom 'rg' arguments can be passed with --rg-args for more advanced search options."
+    echo
+    echo "Examples:"
+    echo "  $0 --error --file error_report.md my_namespace"
+    echo "  $0 --all --rg-args '--ignore-case --follow' my_namespace"
+    echo "  $0 -s 'custom pattern or regex' my_namespace"
+    echo
+}
+
+# Check if no arguments were provided
+if [[ $# -eq 0 ]]; then
+    show_help
+    exit 0
+fi
+
 declare -r DEFAULT_PATTERN="error|warn|fatal"
 declare markdown_file=""
 declare search_pattern=""
@@ -22,24 +52,28 @@ process_logs() {
 
 while [[ $# -gt 0 ]]; do
     case $1 in
-        --all)
+        -a|--all)
             search_pattern="$DEFAULT_PATTERN"
             shift
             ;;
-        --error|--warn)
-            search_pattern="${1#--}"
+        -e|--error)
+            search_pattern="error"
             shift
             ;;
-        --code)
-            search_pattern=" (?:[1-9][0-9]{0,2}|4[0-9]{2}|5[0-9]{2}) "
+        -w|--warn)
+            search_pattern="warn"
             shift
             ;;
-        --http)
-            search_pattern=" 404 | 403 | 500 | 502 | 503 | 504 "
+        -h|--http)
+            search_pattern="http"
             shift
             ;;
-        --file)
+        -f|--file)
             markdown_file="$2"
+            shift 2
+            ;;
+        -s|--search)
+            search_pattern="$2"
             shift 2
             ;;
         --rg-args)
@@ -47,23 +81,7 @@ while [[ $# -gt 0 ]]; do
             shift 2
             ;;
         --help)
-            echo "Usage: $0 [options] <namespace>"
-            echo
-            echo "Options:"
-            echo "  --all                   Use the default search pattern for logs."
-            echo "  --error, --warn, --http Select specific log level patterns (error, warn, http) to search."
-            echo "  --code                  Search for HTTP status codes (4XX and 5XX)."
-            echo "  --file <filename.md>    Specify the output Markdown filename for the report."
-            echo "  --rg-args '<args>'      Provide custom 'rg' (ripgrep) arguments."
-            echo
-            echo "Description:"
-            echo "  Search Kubernetes pod logs for specified patterns and compile results into a Markdown report."
-            echo "  Custom 'rg' arguments can be passed with --rg-args for more advanced search options."
-            echo
-            echo "Examples:"
-            echo "  $0 --error --file error_report.md my_namespace"
-            echo "  $0 --all --rg-args '--ignore-case --follow' my_namespace"
-            echo
+            show_help
             exit 0
             ;;
         *)
