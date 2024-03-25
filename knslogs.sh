@@ -9,7 +9,6 @@ show_help() {
     echo "  -e, --error                Select the 'error' log level pattern to search."
     echo "  -w, --warn                 Select the 'warn' log level pattern to search."
     echo "  -h, --http                 Select the 'http' log level pattern to search."
-    echo "  -c, --code                 Select the 'code' log level pattern to search."
     echo "  -f, --file <filename.md>   Specify the output Markdown filename for the report."
     echo "  -s, --search <pattern>     Specify a custom search pattern."
     echo "      --rg-args '<args>'     Provide custom 'rg' (ripgrep) arguments."
@@ -65,13 +64,10 @@ while [[ $# -gt 0 ]]; do
             search_pattern="warn"
             shift
             ;;
-        -c|--code)
-            search_pattern=" (?:[1-9][0-9]{0,2}|4[0-9]{2}|5[0-9]{2}) "
+        -h|--http)
+            search_pattern="http"
             shift
             ;;
-        -h|--http)
-            search_pattern=" 404 | 403 | 500 | 502 | 503 | 504 "
-            shift
         -f|--file)
             markdown_file="$2"
             shift 2
