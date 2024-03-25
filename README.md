@@ -4,7 +4,7 @@
 
 ### Overview
 
-This script is designed to help you search and analyze Kubernetes pod logs using the ripgrep command-line tool. It compiles the results into a Markdown report, making it easy to share with team members or keep track of important log events. The script supports customizing the search pattern, output file, and additional ripgrep arguments for advanced usage.
+This script is designed to help you search and analyze Kubernetes pod logs from an entire namespace using the ripgrep command-line tool. It compiles the results into a Markdown report, making it easy to share with team members or keep track of important log events. The script supports customizing the search pattern, output file, and additional ripgrep arguments for advanced usage.
 
 
 ### Usage
