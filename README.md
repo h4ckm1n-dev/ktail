@@ -31,9 +31,9 @@ Before using this script, ensure you have the following installed:
 
 ## Examples
 ```bash
-./log_search_script.sh --error --file error_report.md my_namespace
-./log_search_script.sh --all --rg-args '--ignore-case --follow' my_namespace
-./log_search_script.sh -s 'custom pattern or regex' my_namespace
+./knslogs.sh --error --file error_report.md my_namespace
+./knslogs.sh --all --rg-args '--ignore-case --follow' my_namespace
+./knslogs.sh -s 'custom pattern or regex' my_namespace
 ```
 
 ## How It Works
