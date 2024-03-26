@@ -1,6 +1,6 @@
 # Kubernetes Log Search and Report Script
 
-This repository contains a script designed to simplify the process of searching through Kubernetes pod logs and compiling the results into a Markdown report. It leverages `kubectl` and `rg` (ripgrep) to efficiently search logs for specified patterns.
+This repository contains a script designed to simplify the process of searching through Kubernetes pod logs and compiling the results into a Markdown report as an option. It leverages `kubectl` and `rg` (ripgrep) to efficiently search logs for specified patterns.
 
 ## Features
 
