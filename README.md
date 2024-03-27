@@ -17,7 +17,7 @@ Before using this script, ensure you have the following installed:
 ## Usage
 
 ```bash
-./log_search_script.sh [options] <namespace>
+./knslogs.sh [options] <namespace>
 ```
 
 ## Options
